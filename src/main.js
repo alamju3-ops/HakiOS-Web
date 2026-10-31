@@ -72,6 +72,6 @@ device.addEventListener("touchstart",e=>{const t=e.changedTouches[0];gestureStar
 device.addEventListener("touchend",e=>{const t=e.changedTouches[0];gestureEnd(t.clientY,t.clientX)},{passive:true});
 let pointerY=0;device.addEventListener("pointerdown",e=>{pointerY=e.clientY});device.addEventListener("pointerup",e=>{const dy=e.clientY-pointerY;if(state.locked&&dy<-60)unlock();else if(!state.locked&&pointerY<70&&dy>70)openCC()});
 gesture.addEventListener("click",()=>{if(state.locked)unlock();else if(!cc.classList.contains("hidden"))closeCC();else renderHome()});
-lock.addEventListener("click",e=>{const b=e.target.closest("[data-action]");if(b){if(b.dataset.action==="camera-shortcut")openApp("camera");else if(b.dataset.action==="flashlight"){flashOn=!flashOn;showToast(flashOn?"손전등 켬":"손전등 끔")}return}unlock()});
+lock.addEventListener("click",e=>{const b=e.target.closest("[data-action]");if(b){e.stopPropagation();if(b.dataset.action==="camera-shortcut")openApp("camera");else if(b.dataset.action==="flashlight"){flashOn=!flashOn;showToast(flashOn?"손전등 켬":"손전등 끔")}return}unlock()});
 window.addEventListener("keydown",e=>{if(e.key==="Escape"){if(!cc.classList.contains("hidden"))closeCC();else renderHome()}});
 window.addEventListener("load",()=>{updateStatus();if(state.locked)renderLock();else renderHome();setInterval(()=>{if(!lock.classList.contains("hidden")){const clock=lock.querySelector(".lock-clock");if(clock)clock.textContent=formatTime()}},1000)});
