@@ -37,6 +37,7 @@ document.addEventListener("click",e=>{
   case"new-note":openNote(createNote());break;
   case"notes-back":activeNote=null;renderAppContent(renderNotes());break;
   case"new-chat":{const name=prompt("대화 상대 이름을 입력하세요");if(name?.trim())openChat(createChat(name.trim()));break}
+  case"messages-back":openApp("messages");break;
   case"new-contact":{const name=prompt("이름을 입력하세요");if(name?.trim()){const phone=prompt("전화번호를 입력하세요")||"";addContact(name.trim(),phone);openApp("contacts")}break}
   case"app-action":showToast("추가 동작은 준비 중입니다");break;
   case"media-toggle":mediaPlaying=!mediaPlaying;e.target.textContent=mediaPlaying?"Ⅱ":"▶";showToast(mediaPlaying?"재생 중":"일시 정지");break;
@@ -60,6 +61,7 @@ document.addEventListener("input",e=>{
  if(e.target.matches("[data-setting-range],[data-setting],[data-setting-select]"))applySetting(e.target);
  if(e.target.matches("#note-search")){const q=e.target.value.toLowerCase();document.querySelectorAll("[data-edit-note]").forEach(el=>el.style.display=el.textContent.toLowerCase().includes(q)?"":"none")}
  if(e.target.matches("#contact-search")){const q=e.target.value.toLowerCase();document.querySelectorAll(".list-row").forEach(el=>el.style.display=el.textContent.toLowerCase().includes(q)?"":"none")}
+ if(e.target.matches("#message-search")){const q=e.target.value.toLowerCase();document.querySelectorAll(".orbit-conversation").forEach(el=>el.style.display=el.textContent.toLowerCase().includes(q)?"":"none")}
 });
 document.addEventListener("change",e=>{if(e.target.matches("[data-setting],[data-setting-select],[data-setting-range]"))applySetting(e.target)});
 document.addEventListener("submit",e=>{
