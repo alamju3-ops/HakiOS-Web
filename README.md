@@ -27,3 +27,8 @@ HakiOS의 화면 구성과 사용 흐름을 참고해 만든 **브라우저 기�
 
 ## 원본과의 관계
 원본 [HakiOS XNU Kernel](https://github.com/oosexgang/hakios-xnu-kernel)은 Android 기기에서 XNU/Darwin 사용자 공간을 구동하는 실험적 커널 프로젝트입니다. 원본 저장소에는 웹용 완성 UI 템플릿이나 배포 가능한 iOS 화면 에셋 전체가 포함되어 있지 않습니다. 이 프로젝트는 원본에 포함되지 않은 iOS 바이너리·이미지·아이콘을 복사하지 않고, 직접 작성한 HTML/CSS/JavaScript로 비슷한 흐름을 재구성합니다. 따라서 픽셀 단위의 완전한 복제나 실제 iOS 앱 기능을 보장하지 않습니다.
+
+## 연결 프로젝트
+- **Haki React 시뮬레이터:** https://github.com/alamju3-ops/Haki — 홈 화면·앱 흐름의 React 구현입니다.
+- **Orbit Messages UI 원본 프로젝트:** https://github.com/alamju3-ops/iphone — Orbit UI 컴포넌트 실험용 Expo 프로젝트입니다.
+- HakiOS Web의 메시지 목록과 대화 화면에는 Orbit 스타일을 웹용 HTML/CSS로 적용했습니다. Haki 저장소의 React 메시지 창에도 같은 시각적 방향을 반영했습니다.
