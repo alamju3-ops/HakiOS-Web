@@ -1,0 +1,5 @@
+import {state,saveState,makeId} from "../state.js";
+export function renderContacts(){return `<div class="app-toolbar"><input class="app-input" id="contact-search" placeholder="연락처 검색"><button class="app-button" data-action="new-contact">＋</button></div><div class="app-card">${state.contacts.map(c=>`<div class="list-row"><span style="width:39px;height:39px;border-radius:50%;background:linear-gradient(145deg,#b6d3ff,#7d8fd0);color:white;display:grid;place-items:center;font-weight:700">${esc(c.name.slice(0,1))}</span><span class="row-grow"><span class="row-title">${esc(c.name)}</span><div class="row-subtitle">${esc(c.phone)}</div></span><button class="round-button" data-delete-contact="${c.id}">−</button></div>`).join("")||'<div class="app-empty">연락처가 없습니다.</div>'}</div>`}
+export function addContact(name,phone){state.contacts.push({id:makeId(),name,phone});saveState()}
+export function deleteContact(id){state.contacts=state.contacts.filter(c=>c.id!==id);saveState()}
+function esc(s=""){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
