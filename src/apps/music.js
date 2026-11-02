@@ -180,7 +180,7 @@ document.addEventListener("click", event => {
   if (event.target.closest(".wave-mini-player") && !event.target.closest("button")) {
     const app = document.querySelector(".wave-app");
     if (!app || app.querySelector(".wave-now-playing")) return;
-    app.querySelector("#wave-body").innerHTML = nowPlayingView();
+    app.insertAdjacentHTML("beforeend", nowPlayingView());
   }
 });
 export { renderMusic };
